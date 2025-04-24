@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Project</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --accent-color: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light-color);
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background-color: var(--dark-color);
+            padding: 0.5rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h1, h2, h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        button.cta {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s;
+        }
+        
+        button.cta:hover {
+            background-color: #2980b9;
+        }
+        
+        .research-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .highlight-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .highlight-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .team-section {
+            text-align: center;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 1.5rem auto 1rem;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .team-member h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-member .role {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .contact-item h3 {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            background-color: white;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            
+            .research-highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cosmic Explorer</h1>
+        <p>Modelling galaxy population to enable next gen cosmology</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <h1>Cosmo-Pop</h1>
+            <p>Our research focuses on developing generative models to understand galaxy formation and evolution, enabling precise cosmology.</p>
+            <button class="cta">Learn More</button>
+        </section>
+        
+        <section id="about">
+            <h2>About Our Project</h2>
+            <p>Add more ...</p>
+        </section>
+        
+        <section id="research">
+            <h2>Research Highlights</h2>
+            <div class="research-highlights">
+                <div class="highlight-card">
+                    <img src="/api/placeholder/400/320" alt="Research Area 1">
+                    <div class="card-content">
+                        <h3>Galaxy formation and evolution</h3>
+                        <p>Add more ...</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img src="/api/placeholder/400/320" alt="Research Area 2">
+                    <div class="card-content">
+                        <h3>Cosmology</h3>
+                        <p>Add more ...</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img src="/api/placeholder/400/320" alt="Research Area 3">
+                    <div class="card-content">
+                        <h3>Statistics and Machine Learning</h3>
+                        <p>Add more ...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="team" class="team-section">
+            <h2>Our Team</h2>
+            
+            <h3>Principal Investigator</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="PI Name">
+                    <h3>Dr. Hiranya Peiris</h3>
+                    <p class="role">Professor of Astrophysics (1909)</p>
+                    <p> University of Cambridge</p>
+                </div>
+            </div>
+            
+            <h3>Team</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Researcher 1">
+                    <h3>Dr. Stephen Thorp</h3>
+                    <p class="role">Research Associate</p>
+                    <p>Stockholm University</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Researcher 2">
+                    <h3>Dr. Sinan Deger </h3>
+                    <p class="role">Research Associate</p>
+                    <p>University of Cambridge</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Researcher 3">
+                    <h3>Dr. Anik Halder</h3>
+                    <p class="role">Research Associate</p>
+                    <p>University of Cambridge</p>
+                </div>
+                 <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Researcher 4">
+                    <h3>Dr. Boris Leistedt</h3>
+                    <p class="role">Senior Researcher</p>
+                    <p>Imperial College London</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Researcher 5">
+                    <h3>Dr. Justin Alsing</h3>
+                    <p class="role">Assistant Professor</p>
+                    <p>Stockholm University</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Researcher 6">
+                    <h3>Dr. Daniel Mortlock</h3>
+                    <p class="role">Professor</p>
+                    <p>Imperial College London</p>
+                </div>
+                 <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Researcher 7">
+                    <h3>Mr. Gurjeet Jagwani</h3>
+                    <p class="role">Machine Learning Research Software Engineer</p>
+                    <p>University of Cambridge</p>
+                </div>
+            </div>
+            
+            <h3>External Collaborators</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Collaborator 1">
+                    <h3>Dr. Joel Leja</h3>
+                    <p class="role">Assistant Professor</p>
+                    <p>Pennsylvania State University</p>
+                </div>
+           </div>
+        </section>
+        
+        <section id="publications">
+            <h2>Publications</h2>
+            <ul>
+                <li>
+                    <strong>Smith, J., Johnson, M., & Lee, S. (2024).</strong> "[Title of the research paper]." <em>Journal of [Relevant Field]</em>, 45(3), 234-251.
+                </li>
+                <li>
+                    <strong>Lee, S., Thompson, A., & Smith, J. (2023).</strong> "[Title of another research paper]." <em>Proceedings of the International Conference on [Relevant Field]</em>, 123-135.
+                </li>
+                <li>
+                    <strong>Johnson, M., Chen, D., & Garcia, R. (2023).</strong> "[Title of a third research paper]." <em>Advances in [Relevant Field]</em>, 18(2), 78-96.
+                </li>
+            </ul>
+        </section>
+        
+        <section id="contact" class="contact-section">
+            <h2>Contact Us</h2>
+            <p>We welcome inquiries about our research, potential collaborations, or opportunities to join our team.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>hiranya.peiris@ast.cam.ac.uk</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Address</h3>
+                    <p>Department of [Field]<br>University Name<br>City, State ZIP</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Research Project Name &copy; 2025</p>
+        <p>Funded by:</p>
+        <div class="logos">
+            <div class="logo">Logo 1</div>
+            <div class="logo">Logo 2</div>
+            <div class="logo">Logo 3</div>
+        </div>
+        <p>Department of [Field] | University Name</p>
+    </footer>
+</body>
+</html>
